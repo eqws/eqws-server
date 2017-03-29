@@ -34,15 +34,16 @@ class ServerWrapper extends EventEmitter {
 		this._ws.on('error', this._onError.bind(this));
 		this._ws.on('connection', this._onSocketConnection.bind(this));
 
-		this.adapter(new Adapter(this, opts));
+		this.adapter(Adapter);
 	}
 
 	/**
 	 * Update adapter
-	 * @param  {AdapterObject} adapter
+	 * @param  {EQWSAdapterClass} adapter
 	 */
-	adapter(adapter) {
-		this._adapter = adapter;
+	adapter(adapter, opts = this._options) {
+		this._adapter = new adapter(this, opts);
+		this._adapter.on('error', this._onError.bind(this));
 	}
 
 	/**

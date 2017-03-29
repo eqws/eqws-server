@@ -28,6 +28,8 @@ class SocketWrapper extends EventEmitter {
 	send(data) {
 		if (data instanceof Packet) {
 			this._sendPacket(data);
+		} else if (data instanceof ArrayBuffer) {
+			this._sendNative(data);
 		} else {
 			const packet = new Packet(C.PACKET_TYPES.MESSAGE, args);
 			this._sendPacket(packet);
@@ -49,6 +51,11 @@ class SocketWrapper extends EventEmitter {
 		const data = packet.encode();
 
 		debug('send packet', data);
+		this.socket.send(data);
+	}
+
+	_sendNative(data) {
+		debug('send native', data);
 		this.socket.send(data);
 	}
 
