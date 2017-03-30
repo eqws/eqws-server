@@ -55,6 +55,18 @@ class ServerWrapper extends EventEmitter {
 		this[`_${key}`] = fn;
 	}
 
+	/**
+	 * Add plugins to wss server
+	 * @param {Object}
+	 */
+	plugin(plugin) {
+		if (typeof plugin !== 'object') throw new Error('Invalid typeof plugin');
+		if (typeof plugin.init !== 'function') throw new Error('plugin.init must be a function');
+
+		this._plugins.push(plugin);
+		plugin.init(this, this._options);
+	}
+
 	_onError(err) {
 		error(err);
 	}
