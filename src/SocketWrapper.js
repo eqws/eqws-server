@@ -94,7 +94,7 @@ class SocketWrapper extends EventEmitter {
 			debug('parsed packet=%d socket=%s', packet.type, this.id);
 
 			if (!packet.isValid()) {
-				return debug('received scoket=%s invalid packet', this.id);
+				return error('received scoket=%s invalid packet', this.id);
 			}
 
 			switch (packet.type) {
