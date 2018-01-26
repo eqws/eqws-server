@@ -3,7 +3,7 @@ const EventEmitter = require('events').EventEmitter;
 const debug        = require('debug')('eqws-server:socket');
 const error        = require('debug')('eqws-server:socket:error');
 
-const Protocol = require('../../eqws-protocol');
+const Protocol = require('eqws-protocol');
 const Packet   = Protocol.Packet;
 const C        = Protocol.C;
 

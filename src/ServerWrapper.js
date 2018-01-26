@@ -2,9 +2,9 @@ const debug         = require('debug')('eqws-server');
 const error         = require('debug')('eqws-server:error');
 const EventEmitter  = require('events');
 const uws           = require('uws');
+const Adapter       = require('eqws-adapter');
+const Protocol      = require('eqws-protocol');
 const SocketWrapper = require('./SocketWrapper');
-const Adapter       = require('../../eqws-adapter');
-const Protocol      = require('../../eqws-protocol');
 
 const Packet = Protocol.Packet;
 const C      = Protocol.C

@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/eqws/eqws-server#readme",
   "dependencies": {
+    "eqws-adapter": "git+https://github.com/eqws/eqws-adapter.git",
+    "eqws-protocol": "git+https://github.com/eqws/eqws-protocol.git",
     "debug": "^2.6.3",
     "uid2": "0.0.3",
     "uws": "^0.14.0"
